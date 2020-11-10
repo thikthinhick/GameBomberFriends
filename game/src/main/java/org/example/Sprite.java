@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sprite {
-    private Pane pane;
-    private Pane pane1;
-    private Timeline t;
-    private  List<ImageView> list;
+    protected Pane pane;
+    protected Pane pane1;
+    protected Timeline t;
+    protected List<ImageView> list;
     public Sprite(List<String> arr, int height, int width) throws FileNotFoundException {
         pane = new Pane();
         pane1 = new Pane();
