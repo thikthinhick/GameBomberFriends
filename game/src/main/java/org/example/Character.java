@@ -43,7 +43,7 @@ public class Character extends Sprite {
                         pane1.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 100;
+            sum += 200;
         }
         sum = 0;
 
@@ -55,7 +55,7 @@ public class Character extends Sprite {
                         pane2.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 100;
+            sum += 200;
         }
         sum = 0;
         for (int i = 8; i < 12; i++) {
@@ -66,7 +66,7 @@ public class Character extends Sprite {
                         pane3.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 100;
+            sum += 200;
         }
         sum = 0;
         for (int i = 12; i < 16; i++) {
@@ -77,7 +77,7 @@ public class Character extends Sprite {
                         pane4.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 100;
+            sum += 200;
         }
         sum = 0;
         for (int i = 12; i < 16; i++) {
@@ -88,7 +88,7 @@ public class Character extends Sprite {
                         pane4.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 100;
+            sum += 200;
         }
         pane.getChildren().add(button);
         pane.getChildren().add(pane1);
@@ -102,7 +102,7 @@ public class Character extends Sprite {
                         pane.getChildren().add(pane3);
                     }
                     if(check.getCheck((int)pane.getTranslateX() + 16, (int)pane.getTranslateY(), 1 )){
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(15), pane);
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
                         transition.setToX(pane.getTranslateX() + 16);
                         transition.play();
                     }
@@ -113,7 +113,7 @@ public class Character extends Sprite {
                         pane.getChildren().add(pane4);
                     }
                     if(check.getCheck((int)pane.getTranslateX() - 16 , (int)pane.getTranslateY(), 2 )) {
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(15), pane);
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
                         transition.setToX(pane.getTranslateX() - 16);
                         transition.play();
                     }
@@ -124,7 +124,7 @@ public class Character extends Sprite {
                         pane.getChildren().add(pane1);
                     }
                     if(check.getCheck((int)pane.getTranslateX() , (int)pane.getTranslateY() - 16, 3 )) {
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(15), pane);
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
                         transition.setToY(pane.getTranslateY() - 16);
                         transition.play();
                     }
@@ -135,7 +135,7 @@ public class Character extends Sprite {
                         pane.getChildren().add(pane2);
                     }
                     if(check.getCheck((int)pane.getTranslateX() , (int)pane.getTranslateY() + 16, 4 )) {
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(15), pane);
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
                         transition.setToY(pane.getTranslateY() + 16);
                         transition.play();
                     }
