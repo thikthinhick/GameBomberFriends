@@ -1,9 +1,12 @@
-package org.example;
+package org.example.Main;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.example.Character;
+import org.example.paintMap;
+
 import java.util.ArrayList;
 import java.util.List;
 
