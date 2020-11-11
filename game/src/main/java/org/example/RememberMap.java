@@ -7,12 +7,12 @@ import java.io.FileNotFoundException;
 public class RememberMap {
     public RememberMap() {
     }
-    public ImageView getImageView(int x, int y, String url) {
+    public ImageView getImageView(int sizeX, int sizeY, int x, int y, String url) {
         try {
             Image image = new Image(new FileInputStream(url));
             ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(40);
-            imageView.setFitHeight(56);
+            imageView.setFitWidth(sizeX);
+            imageView.setFitHeight(sizeY);
             imageView.setX(x);
             imageView.setY(y);
             return imageView;
