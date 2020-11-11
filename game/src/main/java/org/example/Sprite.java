@@ -1,4 +1,5 @@
 package org.example;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -20,12 +21,10 @@ public class Sprite {
     public Sprite(List<String> arr, int height, int width) throws FileNotFoundException {
         pane = new Pane();
         pane1 = new Pane();
-        pane.getChildren().addAll(pane1);
         t = new Timeline();
         t.setCycleCount(Timeline.INDEFINITE);
         list = new ArrayList<>();
         for (int i = 0; i < arr.size(); i++) {
-            String a = "img/tile001.png";
             Image image = new Image(new FileInputStream(arr.get(i)));
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(width);
@@ -35,7 +34,8 @@ public class Sprite {
     }
 
     public Pane getPane(int time) {
-        int sum = time;
+        pane.getChildren().add(pane1);
+        int sum = 0;
         for (int i = 0; i < list.size(); i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
