@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import java.awt.*;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Timer;
@@ -23,15 +23,19 @@ public class Character extends Sprite {
     Pane pane4 = null;
     Pane BigPane = null;
     Button button;
+    private double pointX = 48;
+    private double pointY = 48;
     public Character(List<String> arr, int height, int width) throws FileNotFoundException {
         super(arr, height, width);
+        BigPane = new Pane();
         button = new Button();
         pane2 = new Pane();
         pane3 = new Pane();
         pane4 = new Pane();
-        BigPane = new Pane();
+        pane.setTranslateX(48);
+        pane.setTranslateY(48);
         BigPane.getChildren().add(pane);
-        int sum = 0;
+        int sum = 100;
         for (int i = 0; i < 4; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -42,7 +46,7 @@ public class Character extends Sprite {
             ));
             sum += 100;
         }
-        sum = 0;
+        sum = 100;
 
         for (int i = 4; i < 8; i++) {
             int finalI = i;
@@ -54,7 +58,7 @@ public class Character extends Sprite {
             ));
             sum += 100;
         }
-        sum = 0;
+        sum = 100;
         for (int i = 8; i < 12; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -65,7 +69,7 @@ public class Character extends Sprite {
             ));
             sum += 100;
         }
-        sum = 0;
+        sum = 100;
         for (int i = 12; i < 16; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -76,7 +80,7 @@ public class Character extends Sprite {
             ));
             sum += 100;
         }
-        sum = 0;
+        sum = 100;
         for (int i = 12; i < 16; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -89,6 +93,7 @@ public class Character extends Sprite {
         }
         pane.getChildren().add(button);
         pane.getChildren().add(pane1);
+        Check check = new Check();
         button.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -97,43 +102,55 @@ public class Character extends Sprite {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane3);
                     }
-                    TranslateTransition transition = new TranslateTransition(Duration.millis(40), pane);
-                    transition.setToX(pane.getTranslateX() + 12);
-                    transition.play();
+                    if (check.getCheck((int)pointX + 16, (int) pointY, 1)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToX(pointX + 16);
+                        pointX += 16;
+                        transition.play();
+                    }
                     t.play();
                 } else if (keyEvent.getCode().toString() == "LEFT") {
                     if (!pane.getChildren().get(pane.getChildren().size() - 1).equals(pane4)) {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane4);
                     }
-                    TranslateTransition transition = new TranslateTransition(Duration.millis(40), pane);
-                    transition.setToX(pane.getTranslateX() - 12);
-                    transition.play();
+                    if (check.getCheck((int) pointX - 16, (int) pointY, 2)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToX(pointX - 16);
+                        pointX -= 16;
+                        transition.play();
+                    }
                     t.play();
                 } else if (keyEvent.getCode().toString() == "UP") {
                     if (!pane.getChildren().get(pane.getChildren().size() - 1).equals(pane1)) {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane1);
                     }
-                    TranslateTransition transition = new TranslateTransition(Duration.millis(40), pane);
-                    transition.setToY(pane.getTranslateY() - 12);
-                    transition.play();
+                    if (check.getCheck((int) pointX, (int) pointY - 16, 3)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToY(pointY - 16);
+                        pointY -= 16;
+                        transition.play();
+                    }
                     t.play();
                 } else if (keyEvent.getCode().toString() == "DOWN") {
                     if (!pane.getChildren().get(pane.getChildren().size() - 1).equals(pane2)) {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane2);
                     }
-                    TranslateTransition transition = new TranslateTransition(Duration.millis(40), pane);
-                    transition.setToY(pane.getTranslateY() + 12);
-                    transition.play();
+                    if (check.getCheck((int) pointX, (int) pointY + 16, 4)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToY(pointY + 16);
+                        pointY += 16;
+                        transition.play();
+                    }
                     t.play();
                 }
                 if (keyEvent.getCode().toString() == "ENTER") {
                     RememberMap c = new RememberMap();
                     int BombX = (int) pane.getTranslateX();
                     int BombY = (int) pane.getTranslateY();
-                    ImageView bomb = c.getImageView(BombX, BombY, "IMG/bomb.png");
+                    ImageView bomb = c.getImageView(48, 48, BombX, BombY, "IMG/bomb.png");
                     bomb.setStyle("-fx-view-order: 6");
                     BigPane.getChildren().add(bomb);
                     Timer timer = new Timer();
@@ -144,7 +161,7 @@ public class Character extends Sprite {
                                 BigPane.getChildren().remove(pane.getChildren().size() - 1);
                                 Fire newFire = null;
                                 try {
-                                    newFire = new Fire();
+                                    newFire = new Fire(BombX, BombY);
                                 } catch (FileNotFoundException e) {
                                     e.printStackTrace();
                                 }
@@ -159,17 +176,18 @@ public class Character extends Sprite {
                                         Platform.runLater(() -> {
                                             BigPane.getChildren().remove(pane.getChildren().size() - 1);
                                         });
-                                        Toolkit.getDefaultToolkit().beep();
                                         timer.cancel();
                                         timer.purge();
                                     }
                                 }, 325, 325);
                             });
-                            Toolkit.getDefaultToolkit().beep();
+
                             timer.cancel();
                             timer.purge();
                         }
                     }, 3000, 1000);
+                } else if (keyEvent.getCode().toString() == "DELETE") {
+                    System.out.println(App.array[3][3]);
                 }
             }
         });
@@ -177,11 +195,11 @@ public class Character extends Sprite {
             @Override
             public void handle(KeyEvent keyEvent) {
                 t.stop();
-                System.out.println("stop");
             }
         });
         t.play();
     }
+
     public Pane getPane() {
         return BigPane;
     }
