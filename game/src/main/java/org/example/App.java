@@ -1,18 +1,21 @@
-package org.example.Main;
+package org.example;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.example.Character;
-import org.example.paintMap;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class App extends Application {
+    static public Pane map;
+    public static char [][] array = new ReadFileText().getArray();
     public static void main(String[] args) {
-        launch(args);
+       launch(args);
     }
 
     @Override
@@ -34,8 +37,10 @@ public class App extends Application {
             arr.add("IMG/left" + i + ".png");
         }
         paintMap a = new paintMap();
+        map = a.getMap();
+        System.out.println(map.getChildren().size());
         Character character = new Character(arr, 48, 48);
-        pane.getChildren().addAll(a.getMap(), character.getPane());
+        pane.getChildren().addAll(map , character.getPane());
         layout.getChildren().add(pane);
         Scene scene = new Scene(layout, 720, 600);
         primaryStage.setScene(scene);

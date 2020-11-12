@@ -11,6 +11,7 @@ public class paintMap {
         for (int i = 0; i < 11; i++) {
             arr[i] = new char[15];
         }
+
         arr = new ReadFileText().getArray();
         RememberMap a = new RememberMap();
         for (int i = 0; i < 5; i++) {
@@ -25,10 +26,12 @@ public class paintMap {
                 else if (arr[i][j] == '@') {
                     Map.getChildren().add(a.getImageView(48, 67, j * 48, i * 48, "IMG/brick.png"));
                 }
+                else {
+                    Map.getChildren().add(a.getImageView(48,48,j * 48, j * 48, "IMG/Xoaphong.png"));
+                }
             }
         }
     }
-
     public Pane getMap() {
         return Map;
     }
