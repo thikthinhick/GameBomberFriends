@@ -1,5 +1,4 @@
-
-package org.example;
+ package org.example;
 
 public class Vector3 {
     private int x;
@@ -20,7 +19,6 @@ public class Vector3 {
     public int getY() {
         return y;
     }
-
     public void setY(int y) {
         this.y = y;
     }

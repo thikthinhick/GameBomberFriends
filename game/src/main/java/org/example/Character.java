@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Timer;
@@ -22,8 +23,8 @@ public class Character extends Sprite {
     Pane pane4 = null;
     Pane BigPane = null;
     Button button;
-    private int pointX = 48;
-    private int pointY = 48;
+    private double pointX = 48;
+    private double pointY = 48;
     public Character(List<String> arr, int height, int width) throws FileNotFoundException {
         super(arr, height, width);
         BigPane = new Pane();
@@ -34,7 +35,7 @@ public class Character extends Sprite {
         pane.setTranslateX(48);
         pane.setTranslateY(48);
         BigPane.getChildren().add(pane);
-        int sum = 0;
+        int sum = 100;
         for (int i = 0; i < 4; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -43,9 +44,9 @@ public class Character extends Sprite {
                         pane1.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 200;
+            sum += 100;
         }
-        sum = 0;
+        sum = 100;
 
         for (int i = 4; i < 8; i++) {
             int finalI = i;
@@ -55,9 +56,9 @@ public class Character extends Sprite {
                         pane2.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 200;
+            sum += 100;
         }
-        sum = 0;
+        sum = 100;
         for (int i = 8; i < 12; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -66,9 +67,9 @@ public class Character extends Sprite {
                         pane3.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 200;
+            sum += 100;
         }
-        sum = 0;
+        sum = 100;
         for (int i = 12; i < 16; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -77,9 +78,9 @@ public class Character extends Sprite {
                         pane4.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 200;
+            sum += 100;
         }
-        sum = 0;
+        sum = 100;
         for (int i = 12; i < 16; i++) {
             int finalI = i;
             t.getKeyFrames().add(new KeyFrame(
@@ -88,7 +89,7 @@ public class Character extends Sprite {
                         pane4.getChildren().setAll(list.get(finalI));
                     }
             ));
-            sum += 200;
+            sum += 100;
         }
         pane.getChildren().add(button);
         pane.getChildren().add(pane1);
@@ -101,9 +102,10 @@ public class Character extends Sprite {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane3);
                     }
-                    if(check.getCheck((int)pane.getTranslateX() + 16, (int)pane.getTranslateY(), 1 )){
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
-                        transition.setToX(pane.getTranslateX() + 16);
+                    if (check.getCheck((int)pointX + 16, (int) pointY, 1)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToX(pointX + 16);
+                        pointX += 16;
                         transition.play();
                     }
                     t.play();
@@ -112,9 +114,10 @@ public class Character extends Sprite {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane4);
                     }
-                    if(check.getCheck((int)pane.getTranslateX() - 16 , (int)pane.getTranslateY(), 2 )) {
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
-                        transition.setToX(pane.getTranslateX() - 16);
+                    if (check.getCheck((int) pointX - 16, (int) pointY, 2)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToX(pointX - 16);
+                        pointX -= 16;
                         transition.play();
                     }
                     t.play();
@@ -123,9 +126,10 @@ public class Character extends Sprite {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane1);
                     }
-                    if(check.getCheck((int)pane.getTranslateX() , (int)pane.getTranslateY() - 16, 3 )) {
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
-                        transition.setToY(pane.getTranslateY() - 16);
+                    if (check.getCheck((int) pointX, (int) pointY - 16, 3)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToY(pointY - 16);
+                        pointY -= 16;
                         transition.play();
                     }
                     t.play();
@@ -134,9 +138,10 @@ public class Character extends Sprite {
                         pane.getChildren().remove(pane.getChildren().size() - 1);
                         pane.getChildren().add(pane2);
                     }
-                    if(check.getCheck((int)pane.getTranslateX() , (int)pane.getTranslateY() + 16, 4 )) {
-                        TranslateTransition transition = new TranslateTransition(Duration.millis(20), pane);
-                        transition.setToY(pane.getTranslateY() + 16);
+                    if (check.getCheck((int) pointX, (int) pointY + 16, 4)) {
+                        TranslateTransition transition = new TranslateTransition(Duration.millis(100), pane);
+                        transition.setToY(pointY + 16);
+                        pointY += 16;
                         transition.play();
                     }
                     t.play();
@@ -156,7 +161,7 @@ public class Character extends Sprite {
                                 BigPane.getChildren().remove(pane.getChildren().size() - 1);
                                 Fire newFire = null;
                                 try {
-                                    newFire = new Fire();
+                                    newFire = new Fire(BombX, BombY);
                                 } catch (FileNotFoundException e) {
                                     e.printStackTrace();
                                 }
@@ -176,13 +181,13 @@ public class Character extends Sprite {
                                     }
                                 }, 325, 325);
                             });
+
                             timer.cancel();
                             timer.purge();
                         }
                     }, 3000, 1000);
-                }
-                if(keyEvent.getCode().toString() == "DELETE") {
-                    System.out.println(pane.getTranslateX() + " " + pane.getTranslateY());
+                } else if (keyEvent.getCode().toString() == "DELETE") {
+                    System.out.println(App.array[3][3]);
                 }
             }
         });
@@ -194,6 +199,7 @@ public class Character extends Sprite {
         });
         t.play();
     }
+
     public Pane getPane() {
         return BigPane;
     }
