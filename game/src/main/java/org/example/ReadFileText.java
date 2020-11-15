@@ -26,8 +26,6 @@ public class ReadFileText {
                 }
                 j++;
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

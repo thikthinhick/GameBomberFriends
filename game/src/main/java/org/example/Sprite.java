@@ -24,8 +24,9 @@ public class Sprite {
         t = new Timeline();
         t.setCycleCount(Timeline.INDEFINITE);
         list = new ArrayList<>();
-        for (int i = 0; i < arr.size(); i++) {
-            Image image = new Image(new FileInputStream(arr.get(i)));
+        for (String s : arr) {
+            Image image;
+            image = new Image(new FileInputStream(s));
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(width);
             imageView.setFitHeight(height);
