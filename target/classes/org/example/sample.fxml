@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" prefHeight="590.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.menuScene">
+   <children>
+      <ImageView fitHeight="639.0" fitWidth="896.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG/nenMenu.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="259.0" fitWidth="510.0" layoutX="198.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG/hinhbomberman.png" />
+         </image>
+      </ImageView>
+      <Label id="button1" alignment="CENTER" ellipsisString="" layoutX="326.0" layoutY="274.0" onMouseClicked="#Action1" prefHeight="45.0" prefWidth="261.0" style="-fx-background-color: RGB(245,130,33); -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="OFLINE" textAlignment="JUSTIFY" textFill="#2c1414" textOverrun="CLIP">
+         <font>
+            <Font name="Futura Light BT" size="29.0" />
+         </font>
+      </Label>
+      <Label id="button1" alignment="CENTER" ellipsisString="" layoutX="326.0" layoutY="327.0" onMouseClicked="#Action2" prefHeight="45.0" prefWidth="261.0" style="-fx-background-color: RGB(245,130,33); -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="ONLINE" textAlignment="JUSTIFY" textOverrun="CLIP">
+         <font>
+            <Font name="Futura Light BT" size="29.0" />
+         </font>
+      </Label>
+      <Label id="button1" alignment="CENTER" ellipsisString="" layoutX="327.0" layoutY="438.0" onMouseClicked="#Action4" prefHeight="45.0" prefWidth="261.0" style="-fx-background-color: RGB(245,130,33); -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="ABOUT" textAlignment="JUSTIFY" textOverrun="CLIP">
+         <font>
+            <Font name="Futura Light BT" size="29.0" />
+         </font>
+      </Label>
+      <Label id="button1" alignment="CENTER" ellipsisString="" layoutX="327.0" layoutY="492.0" onMouseClicked="#Action5" prefHeight="45.0" prefWidth="261.0" style="-fx-background-color: RGB(245,130,33); -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="EXIT" textAlignment="JUSTIFY" textOverrun="CLIP">
+         <font>
+            <Font name="Futura Light BT" size="29.0" />
+         </font>
+      </Label>
+      <Label id="button1" alignment="CENTER" ellipsisString="" layoutX="327.0" layoutY="383.0" onMouseClicked="#Action3" prefHeight="45.0" prefWidth="261.0" style="-fx-background-color: RGB(245,130,33); -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="SETTING" textAlignment="JUSTIFY" textFill="#2c1414" textOverrun="CLIP">
+         <font>
+            <Font name="Futura Light BT" size="29.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
